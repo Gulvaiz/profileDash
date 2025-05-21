@@ -41,10 +41,12 @@ const ExperienceSection = ({ education, projects }) => {
                 {Object.entries(project.links).map(([key, value], linkIndex) => (
                   <a 
                     key={linkIndex}
-                    href="#" 
+                    href={value} 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-xs flex items-center bg-accent text-white px-3 py-1 rounded hover:bg-blue-600 transition-colors"
                   >
-                    <FaExternalLinkAlt className="mr-1" /> {value}
+                    <FaExternalLinkAlt className="mr-1" /> {key}
                   </a>
                 ))}
               </div>

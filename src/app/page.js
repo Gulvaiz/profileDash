@@ -7,11 +7,22 @@ import ExperienceSection from '../components/ExperienceSection';
 import SkillsSection from '../components/SkillsSection';
 import CertificationsSection from '../components/CertificationsSection';
 import GoalsHobbiesSection from '../components/GoalsHobbiesSection';
+import LoadingSpinner from '../components/LoadingSpinner';
 import resumeData from '../data/resumeData';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('profile');
+  const [isLoading, setIsLoading] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
+
+  // Simulate loading for better user experience
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   // Handle intersection observer to update active section on scroll
   useEffect(() => {
@@ -33,28 +44,30 @@ export default function Home() {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     
-    // Observe all sections
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-
-    return () => {
+    // Observe all sections after loading
+    if (!isLoading) {
+      const sections = document.querySelectorAll('section[id]');
       sections.forEach((section) => {
-        observer.unobserve(section);
+        observer.observe(section);
       });
-    };
-  }, [isMounted]);
+      
+      return () => {
+        sections.forEach((section) => {
+          observer.unobserve(section);
+        });
+      };
+    }
+  }, [isMounted, isLoading]);
 
-  if (!isMounted) {
-    return null; // Prevent hydration errors
+  if (isLoading) {
+    return <LoadingSpinner />;
   }
 
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
       
-      <div className="container mx-auto px-4 py-8 flex-grow">
+      <div className="container mx-auto px-4 py-8 flex-grow max-w-6xl">
         <ProfileSection profile={resumeData.profile} />
         <ExperienceSection education={resumeData.education} projects={resumeData.projects} />
         <SkillsSection skills={resumeData.skills} />
@@ -62,10 +75,16 @@ export default function Home() {
         <GoalsHobbiesSection goals={resumeData.goals} hobbies={resumeData.hobbies} />
       </div>
       
-      <footer className="bg-primary text-white py-4">
-        <div className="container mx-auto px-4 text-center">
-          <p>&copy; {new Date().getFullYear()} {resumeData.profile.name}. All rights reserved.</p>
-          <p className="text-sm mt-1">Built with Next.js and Tailwind CSS</p>
+      <footer className="bg-primary-dark text-white py-6">
+        <div className="container mx-auto px-4 text-center max-w-6xl">
+          <p className="text-lg font-medium">&copy; {new Date().getFullYear()} {resumeData.profile.name}</p>
+          <p className="text-sm mt-2 text-white/70">Built with Next.js and Tailwind CSS</p>
+          
+          <div className="mt-4 flex justify-center space-x-4">
+            <a href="#" className="text-white/80 hover:text-white transition-colors">Terms</a>
+            <a href="#" className="text-white/80 hover:text-white transition-colors">Privacy</a>
+            <a href="#" className="text-white/80 hover:text-white transition-colors">Contact</a>
+          </div>
         </div>
       </footer>
     </div>

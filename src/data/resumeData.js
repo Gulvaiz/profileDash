@@ -31,10 +31,10 @@ const resumeData = {
         description: "Built a Tinder-inspired developer networking platform using React.js, Redux, Tailwind CSS, Node.js, Express, and MongoDB. Implemented secure JWT-based authentication, real-time connection requests, and a swipe-like matching system enabling developers to connect, send/accept requests, and view mutual connections. Focused on RESTful API design, modular architecture, and a responsive, user-centric UI.",
         technologies: "React JS, React Router, Redux Toolkit, Axios, Javascript, Tailwind CSS, HTML, CSS, Node JS, Mongo DB, Express Js, CORS, Cookie-parser, bcrypt, dotenv",
         links: {
-          frontendGithub: "GitHub Frontend",
-          backendGithub: "Backend GitHub",
-          liveFrontend: "Live Frontend",
-          liveBackend: "Live Backend"
+          frontendGithub: "https://github.com/Gulvaiz/devtinderF",
+          backendGithub: "https://github.com/Gulvaiz/devtinderB",
+          liveFrontend: "https://devtinder-f-xi.vercel.app/",
+          liveBackend: "https://devtinderb-6u2a.onrender.com/"
         }
       },
       {
@@ -42,7 +42,7 @@ const resumeData = {
         description: "Built a Netflix GPT clone with React, Redux, Firebase, and Tailwind CSS. Integrated TMDB and OpenAI APIs for movie content, GPT-based search, and user authentication. Features include responsive design, autoplay trailers, and multi-language support for enhanced user experience.",
         technologies: "React Js, Redux, TailwindCSS, Firebase, TMDB",
         links: {
-          webApp: "WebApp Link"
+          webApp: "https://netflix-gpt-8odf.vercel.app/"
         }
       },
       {
@@ -50,7 +50,7 @@ const resumeData = {
         description: "I created a responsive personal portfolio website using React, JavaScript, Tailwind CSS, and Framer Motion to showcase my projects, education, skills, and contact information. It features a modern design, smooth animations, and a user-friendly layout. Key sections include Projects with links and details, About Me, Education, and a Contact Form. The site also offers downloadable resumes and certificates, with direct links to my GitHub, LinkedIn, and Gmail, serving as a professional platform for networking and opportunities.",
         technologies: "React JS, TailwindCSS, Netlify, Javascript, HTML, CSS",
         links: {
-          webApp: "WebApp Link"
+          webApp: "https://gulvaizportfolio.netlify.app/"
         }
       }
     ],
@@ -65,12 +65,14 @@ const resumeData = {
       {
         title: "MERN Full Stack Development Course",
         issuer: "AccioJob",
-        date: "Nov, 2024"
+        date: "Nov, 2024",
+        src: "./MernCertificate.pdf"
       },
       {
         title: "Barclay's LifeSkills Programme",
         issuer: "",
-        date: "Aug, 2022"
+        date: "Aug, 2022",
+         src: "./barclay.pdf"
       }
     ],
     goals: [
@@ -82,7 +84,6 @@ const resumeData = {
     hobbies: [
       "Watching travel documentaries",
       "Photography",
-      "Shooting",
       "Traveling"
     ]
   };
